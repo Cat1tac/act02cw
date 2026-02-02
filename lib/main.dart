@@ -104,7 +104,6 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: .center,
           children: [
-            const Text('You have pushed the button this many times:'),
             Card(
               elevation: 4,
               margin: EdgeInsets.all(16),
@@ -127,9 +126,27 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
+            Card(
+              elevation: 4,
+              margin: EdgeInsets.all(16),
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: Row(
+                  children: [
+                    Icon(Icons.arrow_circle_down, size: 50, color: Colors.red),
+                    Icon(Icons.arrow_circle_left, size: 50, color: Colors.orange),
+                    Icon(Icons.arrow_circle_up, size: 50, color: Colors.yellow),
+                    Icon(Icons.arrow_circle_right, size: 50, color: Colors.green),
+                    Icon(Icons.circle_outlined, size: 50, color: Colors.blue),
+                    Icon(Icons.circle, size: 50, color: Colors.indigo),
+                    Icon(Icons.alarm, size: 50, color: Colors.purple),
+                  ]
+                )
+              )
+            ),
             ListView.builder(
               shrinkWrap: true,
-              itemCount: 10,
+              itemCount: 5,
               itemBuilder: (context, index) {
                 return ListTile(
                   leading: Icon(Icons.star, color: Colors.amber),
@@ -138,14 +155,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   trailing: Icon(Icons.arrow_forward_ios),
                 );
               },
-            )
+            ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
