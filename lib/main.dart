@@ -105,10 +105,40 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: .center,
           children: [
             const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            Card(
+              elevation: 4,
+              margin: EdgeInsets.all(16),
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: Row(
+                  children: [
+                    Icon(Icons.person, size: 50, color: Colors.blue),
+                    SizedBox(width: 16),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Student Name', 
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        Text('Major: Computer Science', 
+                          style: TextStyle(color: Colors.grey)),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  leading: Icon(Icons.star, color: Colors.amber),
+                  title: Text('Item ${index + 1}'),
+                  subtitle: Text('Description for item ${index + 1}'),
+                  trailing: Icon(Icons.arrow_forward_ios),
+                );
+              },
+            )
           ],
         ),
       ),
@@ -120,3 +150,36 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+class CounterWidget extends StatefulWidget {
+  @override
+  _CounterWidgetState createState() => _CounterWidgetState();
+}
+
+class _CounterWidgetState extends State<CounterWidget> {
+  int _count = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text('Count: $_count', style: TextStyle(fontSize: 24)),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () => setState(() => _count--),
+              child: Icon(Icons.remove),
+            ),
+            SizedBox(width: 20),
+            ElevatedButton(
+              onPressed: () => setState(() => _count++),
+              child: Icon(Icons.add),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
